@@ -1,5 +1,6 @@
 module main
 
+import spytheman.vperlin as perlin
 import rand
 
 const (
@@ -32,10 +33,17 @@ fn height_map_fusion (height_a [][]f32, height_b [][]f32, coeff_a int, coeff_b i
 
 fn generate_map (width int, height int) [][]Cell {
 	rand.seed([rand.u32(), rand.u32()])
-	mut height_map1 := perlin(width, height)
-	mut height_map2 := perlin(int(width/5), int(height/5))
-	mut height_map_tot := height_map_fusion(height_map1, height_map2, 1, 2)
+	// mut height_map1 := perlin(width, height)
+	// mut height_map2 := perlin(int(width/5), int(height/5))
+	// mut height_map_tot := height_map_fusion(height_map1, height_map2, 1, 2)
 
+	mut map := [][]f64{}
+	for y in 0..height {
+		map << []f64{}
+		for x in 0..width {
+			
+		}
+	}
 
 	mut cell_map := [][]Cell{}
 	for y in 0..height {
@@ -59,7 +67,6 @@ fn generate_map (width int, height int) [][]Cell {
 			}
 		}
 	}
-	print("ça génère nickel")
 
 	return cell_map
 }
