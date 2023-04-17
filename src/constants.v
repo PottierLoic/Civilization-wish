@@ -4,9 +4,9 @@ import gx
 
 const (
 	// Dimensions
-	screen_height = 500
-	screen_width = 500
-	cell_size = 10
+	screen_height = 1000
+	screen_width = 1000
+	cell_size = 1
 
 	// Colors
 	bg_color = gx.black

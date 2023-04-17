@@ -1,7 +1,7 @@
 module main
 
-import spytheman.vperlin as perlin
 import rand
+import spytheman.vperlin as perlin
 
 const (
 	deep_water_height = f32(0.2)
@@ -32,16 +32,12 @@ fn height_map_fusion (height_a [][]f32, height_b [][]f32, coeff_a int, coeff_b i
 }
 
 fn generate_map (width int, height int) [][]Cell {
-	rand.seed([rand.u32(), rand.u32()])
-	// mut height_map1 := perlin(width, height)
-	// mut height_map2 := perlin(int(width/5), int(height/5))
-	// mut height_map_tot := height_map_fusion(height_map1, height_map2, 1, 2)
-
-	mut map := [][]f64{}
+	mut height_map := [][]f64{}
+	rd := rand.int()
 	for y in 0..height {
-		map << []f64{}
+		height_map << []f64{}
 		for x in 0..width {
-			
+			height_map[y] << perlin.noise2d(f64(x)/f64(width/3), f64(y)/f64(height/3))*3
 		}
 	}
 
@@ -50,17 +46,17 @@ fn generate_map (width int, height int) [][]Cell {
 		cell_map << []Cell{}
 		for x in 0..width {
 			cell_map[y] << Cell{}
-			if height_map_tot[y][x] > snow_height {
+			if height_map[y][x] > snow_height {
 				cell_map[y][x] = new_cell("snow")
-			} else if height_map_tot[y][x] > rock_height {
+			} else if height_map[y][x] > rock_height {
 				cell_map[y][x] = new_cell("rock")
-			} else if height_map_tot[y][x] > forest_height {
+			} else if height_map[y][x] > forest_height {
 				cell_map[y][x] = new_cell("forest")
-			} else if height_map_tot[y][x] > grass_height {
+			} else if height_map[y][x] > grass_height {
 				cell_map[y][x] = new_cell("grass")
-			} else if height_map_tot[y][x] > sand_height {
+			} else if height_map[y][x] > sand_height {
 				cell_map[y][x] = new_cell("sand")
-			} else if height_map_tot[y][x] > shallow_water_height {
+			} else if height_map[y][x] > shallow_water_height {
 				cell_map[y][x] = new_cell("shallow_water")
 			} else {
 				cell_map[y][x] = new_cell("deep_water")
