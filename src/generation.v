@@ -1,12 +1,11 @@
 module main
 
 import rand
-import spytheman.vperlin as perlin
 
 const (
-	deep_water_height = f32(0.2)
-	shallow_water_height = f32(0.4)
-	sand_height = f32(0.5)
+	deep_water_height = f32(0.4)
+	shallow_water_height = f32(0.5)
+	sand_height = f32(0.6)
 	grass_height = f32(0.7)
 	forest_height = f32(0.8)
 	rock_height = f32(0.9)
@@ -32,14 +31,8 @@ fn height_map_fusion (height_a [][]f32, height_b [][]f32, coeff_a int, coeff_b i
 }
 
 fn generate_map (width int, height int) [][]Cell {
-	mut height_map := [][]f64{}
-	rd := rand.int()
-	for y in 0..height {
-		height_map << []f64{}
-		for x in 0..width {
-			height_map[y] << perlin.noise2d(f64(x)/f64(width/3), f64(y)/f64(height/3))*3
-		}
-	}
+
+	height_map := perlin_array(width, height)
 
 	mut cell_map := [][]Cell{}
 	for y in 0..height {

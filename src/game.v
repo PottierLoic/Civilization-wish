@@ -8,6 +8,6 @@ struct Game {
 
 fn new_game() Game {
 	return Game {
-		world: new_world(1000, 1000)
+		world: new_world(100, 100)
 	}
 }

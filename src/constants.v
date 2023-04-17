@@ -6,7 +6,7 @@ const (
 	// Dimensions
 	screen_height = 1000
 	screen_width = 1000
-	cell_size = 1
+	cell_size = 5
 
 	// Colors
 	bg_color = gx.black
