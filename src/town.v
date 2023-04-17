@@ -6,6 +6,7 @@ struct Town {
 		population int
 		food int
 		production int
+		wonders []Wonder
 }
 
 fn new_town(name string) Town {

@@ -11,7 +11,6 @@ struct App {
 }
 
 fn (mut app App) display() {
-	// display here
 
 	// screen display
 	mut istream_image := app.gg.get_cached_image_by_idx(app.iidx)
@@ -44,5 +43,7 @@ fn main() {
 		create_window: true
 		window_title: 'Civilization wishhh'
 	)
+
+	
 	app.gg.run()
 }
