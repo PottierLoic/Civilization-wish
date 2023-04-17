@@ -9,8 +9,8 @@ struct Cell {
 	// than a town and a town is multiple cells
 }
 
-fn new_cell(biome string, attraction int) Cell {
+fn new_cell(biome string) Cell {
 	return Cell{
-		biome: new_biome(biome, attraction),
+		biome: new_biome(biome),
 	}
 }
