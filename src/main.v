@@ -79,16 +79,16 @@ fn keydown(code gg.KeyCode, mod gg.Modifier, mut app App) {
 	} else if code == gg.KeyCode.down {
 		app.y += 10
 	} 
-	// if app.x < screen_width / 2 { 
-	// 	app.x = screen_width / 2 
-	// } else if app.x > app.game.world.width - screen_width / 2 {
-	// 	app.x = app.game.world.width - screen_width / 2
-	// }
-	// if app.y < screen_height / 2 {
-	// 	app.y = screen_height / 2
-	// } else if app.y > app.game.world.height - screen_height / 2{
-	// 	app.y = app.game.world.height - screen_height / 2
-	// }
+	if app.x < screen_width / 2 { 
+		app.x = screen_width / 2 
+	} else if app.x > app.game.world.width * cell_size - screen_width / 2 {
+		app.x = app.game.world.width * cell_size - screen_width / 2
+	}
+	if app.y < screen_height / 2 {
+		app.y = screen_height / 2
+	} else if app.y > app.game.world.height * cell_size - screen_height / 2{
+		app.y = app.game.world.height * cell_size - screen_height / 2
+	}
 	
 }
 
