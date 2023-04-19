@@ -3,12 +3,12 @@ module main
 import rand
 
 const (
-	deep_water_height = f32(0.4)
-	shallow_water_height = f32(0.5)
-	sand_height = f32(0.6)
-	grass_height = f32(0.7)
+	deep_water_height = f32(0.2)
+	shallow_water_height = f32(0.4)
+	sand_height = f32(0.5)
+	grass_height = f32(0.6)
 	forest_height = f32(0.8)
-	rock_height = f32(0.9)
+	rock_height = f32(0.95)
 	snow_height = f32(1)
 )
 
@@ -32,19 +32,15 @@ fn height_map_fusion (height_a [][]f32, height_b [][]f32, coeff_a int, coeff_b i
 
 fn generate_map (width int, height int) [][]Cell {
 
-	height_map := perlin_array(width, height)
+	height_map := fractal_perlin_array(width, height, 10, 8, 0.8, 1.25)
 
 	mut cell_map := [][]Cell{}
 	for y in 0..height {
 		cell_map << []Cell{}
 		for x in 0..width {
 			cell_map[y] << Cell{}
-			if height_map[y][x] > snow_height {
-				cell_map[y][x] = new_cell("snow")
-			} else if height_map[y][x] > rock_height {
+			if height_map[y][x] > rock_height {
 				cell_map[y][x] = new_cell("rock")
-			} else if height_map[y][x] > forest_height {
-				cell_map[y][x] = new_cell("forest")
 			} else if height_map[y][x] > grass_height {
 				cell_map[y][x] = new_cell("grass")
 			} else if height_map[y][x] > sand_height {
