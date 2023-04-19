@@ -1,6 +1,7 @@
 module main
 
 import rand
+import perlin as perl
 
 // height_a < height_b
 fn height_map_fusion(height_a [][]f32, height_b [][]f32, coeff_a int, coeff_b int) [][]f32 {
@@ -20,7 +21,7 @@ fn height_map_fusion(height_a [][]f32, height_b [][]f32, coeff_a int, coeff_b in
 }
 
 fn generate_map(width int, height int) [][]Cell {
-	height_map := fractal_perlin_array(width, height, 10, 8, 0.8, 1.25)
+	height_map := perl.fractal_perlin_array(width, height, 10, 8, 0.8, 1.25)
 
 	mut cell_map := [][]Cell{}
 	for y in 0 .. height {

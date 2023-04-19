@@ -1,4 +1,4 @@
-module main
+module perlin
 
 import rand
 
@@ -100,7 +100,7 @@ fn perlin_array(width int, height int, res int) [][]f32 {
 	return grid
 }
 
-fn fractal_perlin_array(width int, height int, res int, octaves int, persistance f32, lacunarity f32) [][]f32 {
+pub fn fractal_perlin_array(width int, height int, res int, octaves int, persistance f32, lacunarity f32) [][]f32 {
 	mut grid := [][]f32{}
 	for y in 0 .. height {
 		grid << []f32{}
