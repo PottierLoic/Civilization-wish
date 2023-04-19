@@ -1,23 +1,19 @@
 module main
 
 struct Player {
-		// player info
-		name string
-		civilization Civilization
-	
-	mut:
-		// resources
-		gold int
-		science int
-		faith int
-		culture int
-
-		// places
-		towns []Town
-
-		// entities
-		entities []Entity
-
+	// player info
+	name         string
+	civilization Civilization
+mut:
+	// resources
+	gold    int
+	science int
+	faith   int
+	culture int
+	// places
+	towns []Town
+	// entities
+	entities []Entity
 }
 
 fn new_player(name string, civilization Civilization) Player {

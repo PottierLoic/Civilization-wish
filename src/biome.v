@@ -1,38 +1,36 @@
 module main
 
-import gx
-
 struct Biome {
-	name string
+	name       string
 	attraction int
 }
 
 fn new_biome(name string) Biome {
-	if name == "sand" {
+	if name == 'sand' {
 		return Biome{
 			name: name
 			attraction: 1
 		}
-	} else if name == "deep_water" {
+	} else if name == 'deep_water' {
 		return Biome{
 			name: name
 			attraction: 1
 		}
-	} else if name == "shallow_water" {
+	} else if name == 'shallow_water' {
 		return Biome{
 			name: name
 			attraction: 1
 		}
-	} else if name == "grass" {
+	} else if name == 'grass' {
 		return Biome{
 			name: name
 			attraction: 2
 		}
-	} else if name == "rock" {
+	} else if name == 'rock' {
 		return Biome{
 			name: name
 			attraction: 2
 		}
 	}
-	panic ("type de case inconnu")
+	panic('type de case inconnu')
 }

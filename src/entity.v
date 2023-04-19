@@ -1,16 +1,19 @@
 module main
 
 struct Entity {
-	name string
-	health int
+	name          string
+mut:	
+	x			  int
+	y			  int
+	health        int
 	max_movements int
-	movement int
-	faith int
-	damage int
+	movement      int
+	faith         int
+	damage        int
 }
 
 fn new_entity(name string) Entity {
-	return Entity {
+	return Entity{
 		name: name
 	}
 }

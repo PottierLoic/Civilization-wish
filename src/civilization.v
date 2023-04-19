@@ -1,9 +1,11 @@
 module main
 
 struct Civilization {
-	name string
-	leader string
+	name        string
+	leader      string
 	description string
+
+	// bonus and effects after this
 }
 
 fn new_civilization(name string) Civilization {
@@ -12,5 +14,5 @@ fn new_civilization(name string) Civilization {
 	// probably going to do that.
 	return Civilization{
 		name: name
-		}
+	}
 }
