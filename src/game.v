@@ -9,6 +9,6 @@ mut:
 fn new_game() Game {
 	return Game{
 		world: new_world(300, 300)
-		players: [new_player("Loic", new_civilization("Gaule"))]	
+		players: [new_player("Loic", new_civilization("france"))]	
 	}
 }

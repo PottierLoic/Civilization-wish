@@ -30,14 +30,18 @@ fn generate_map(width int, height int) [][]Cell {
 			cell_map[y] << Cell{}
 			if height_map[y][x] > rock_height {
 				cell_map[y][x] = new_cell('rock')
+				if rand.f32() < iron_spawn_chance { cell_map[y][x].add_ressource('iron', 1) }
 			} else if height_map[y][x] > grass_height {
 				cell_map[y][x] = new_cell('grass')
+				if rand.f32() < wheath_spawn_chance { cell_map[y][x].add_ressource('wheath', 1) }
 			} else if height_map[y][x] > sand_height {
 				cell_map[y][x] = new_cell('sand')
 			} else if height_map[y][x] > shallow_water_height {
 				cell_map[y][x] = new_cell('shallow_water')
+				if rand.f32() < fish_spawn_chance { cell_map[y][x].add_ressource('fish', 1) }
 			} else {
 				cell_map[y][x] = new_cell('deep_water')
+				if rand.f32() < fish_spawn_chance { cell_map[y][x].add_ressource('fish', 1) }
 			}
 		}
 	}

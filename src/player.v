@@ -10,10 +10,13 @@ mut:
 	science int
 	faith   int
 	culture int
+
 	// places
-	towns []Town
+	towns []&Town
+
 	// entities
 	entities []Entity
+
 }
 
 fn new_player(name string, civilization Civilization) Player {

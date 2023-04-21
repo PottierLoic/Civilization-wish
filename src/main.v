@@ -39,13 +39,22 @@ fn (mut app App) display() {
 						continue
 					}
 					unsafe {
-						match w.grid[y][x].biome.name {
-							'sand' { app.pixels[x * cell_size + xx - app.x + screen_width / 2 +	(y * cell_size + yy - app.y + screen_height / 2) * screen_width] = u32(sand_texture[yy][xx].abgr8()) }
-							'grass' { app.pixels[x * cell_size + xx - app.x + screen_width / 2 + (y * cell_size + yy - app.y + screen_height / 2) * screen_width] = u32(grass_texture[yy][xx].abgr8()) }
-							'deep_water' { app.pixels[x * cell_size + xx - app.x + screen_width / 2 + (y * cell_size + yy - app.y +	screen_height / 2) * screen_width] = u32(deep_water_texture[yy][xx].abgr8()) }
-							'shallow_water' { app.pixels[x * cell_size + xx - app.x + screen_width / 2 + (y * cell_size + yy - app.y + screen_height / 2) * screen_width] = u32(shallow_water_texture[yy][xx].abgr8()) }
-							'rock' { app.pixels[x * cell_size + xx - app.x + screen_width / 2 + (y * cell_size + yy - app.y + screen_height / 2) * screen_width] = u32(rock_texture[yy][xx].abgr8()) }
-							else { continue }
+						if w.grid[y][x].town == nil {
+							match w.grid[y][x].biome.name {
+								'sand' { app.pixels[x * cell_size + xx - app.x + screen_width / 2 +	(y * cell_size + yy - app.y + screen_height / 2) * screen_width] = u32(sand_texture[yy][xx].abgr8()) }
+								'grass' { app.pixels[x * cell_size + xx - app.x + screen_width / 2 + (y * cell_size + yy - app.y + screen_height / 2) * screen_width] = u32(grass_texture[yy][xx].abgr8()) }
+								'deep_water' { app.pixels[x * cell_size + xx - app.x + screen_width / 2 + (y * cell_size + yy - app.y +	screen_height / 2) * screen_width] = u32(deep_water_texture[yy][xx].abgr8()) }
+								'shallow_water' { app.pixels[x * cell_size + xx - app.x + screen_width / 2 + (y * cell_size + yy - app.y + screen_height / 2) * screen_width] = u32(shallow_water_texture[yy][xx].abgr8()) }
+								'rock' { app.pixels[x * cell_size + xx - app.x + screen_width / 2 + (y * cell_size + yy - app.y + screen_height / 2) * screen_width] = u32(rock_texture[yy][xx].abgr8()) }
+								else { continue }
+							}
+						} else {
+							match w.grid[y][x].town.civilization.name {
+								'france' { app.pixels[x * cell_size + xx - app.x + screen_width / 2 +	(y * cell_size + yy - app.y + screen_height / 2) * screen_width] = u32(france_town_texture[yy][xx].abgr8()) }
+								'rome' { app.pixels[x * cell_size + xx - app.x + screen_width / 2 +	(y * cell_size + yy - app.y + screen_height / 2) * screen_width] = u32(rome_town_texture[yy][xx].abgr8()) }
+								else { continue }
+							}
+							
 						}
 					}
 				}

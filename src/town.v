@@ -3,14 +3,16 @@ module main
 struct Town {
 	name string
 mut:
-	population int
+	civilization Civilization
+	population int = 1
 	food       int
-	production int
+	production int = 1
 	wonders    []Wonder
 }
 
-fn new_town(name string) Town {
-	return Town{
+fn new_town(civilization Civilization, name string) &Town {
+	return &Town{
+		civilization: civilization
 		name: name
 	}
 }

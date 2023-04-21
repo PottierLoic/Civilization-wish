@@ -2,11 +2,17 @@ module main
 
 struct Cell {
 	biome      Biome
+mut:
 	ressources []string
-	town       &Town
-	// need to add something like (town Town) that isn't filled
-	// but don't know how to do that because there can be other builds
-	// than a town and a town is multiple cells
+	town       &Town = unsafe { nil }
+}
+
+fn (mut c Cell) add_ressource(ressource string, amount int) {
+	for _ in 0..amount { c.ressources << ressource }
+}
+
+fn (mut c Cell) add_town(town &Town) {
+	unsafe { c.town = town }
 }
 
 fn new_cell(biome string) Cell {
