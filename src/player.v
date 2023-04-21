@@ -17,6 +17,8 @@ mut:
 	// entities
 	entities []Entity
 
+	// visibility
+	visibility_grid [][]bool
 }
 
 fn new_player(name string, civilization Civilization) Player {

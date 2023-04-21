@@ -5,6 +5,7 @@ struct Cell {
 mut:
 	ressources []string
 	town       &Town = unsafe { nil }
+	entity	   &Entity = unsafe { nil }
 }
 
 fn (mut c Cell) add_ressource(ressource string, amount int) {

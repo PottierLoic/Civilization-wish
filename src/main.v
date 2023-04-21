@@ -10,11 +10,20 @@ mut:
 	game   Game = new_game()
 	x      int
 	y      int
+	actual_player string
 }
 
 fn (mut app App) display() {
 	app.pixels = unsafe { vcalloc(screen_width * screen_height * sizeof(u32)) }
 	w := app.game.world
+	app.game.update_visibility_grids()
+	// get visibility grid of the actual player
+	mut actual_visibility := [][]bool{}
+	for player in app.game.players {
+		if app.actual_player == player.name {
+			actual_visibility = player.visibility_grid.clone()
+		} 
+	}
 
 	// to only check lines that could be visible
 	min_x := (app.x - screen_width) / cell_size
@@ -30,6 +39,7 @@ fn (mut app App) display() {
 			if x > max_x || x < min_x {
 				continue
 			}
+			if actual_visibility[y][x] == false { continue }
 			for xx in 0 .. cell_size {
 				for yy in 0 .. cell_size {
 					if y * cell_size + yy < app.y - screen_height / 2
@@ -54,7 +64,6 @@ fn (mut app App) display() {
 								'rome' { app.pixels[x * cell_size + xx - app.x + screen_width / 2 +	(y * cell_size + yy - app.y + screen_height / 2) * screen_width] = u32(rome_town_texture[yy][xx].abgr8()) }
 								else { continue }
 							}
-							
 						}
 					}
 				}
@@ -109,6 +118,9 @@ fn keydown(code gg.KeyCode, mod gg.Modifier, mut app App) {
 fn main() {
 	mut app := App{
 		gg: 0
+		// will be doing this until turns are implemented
+		// since this, can't really act as a client in main
+		actual_player: 'loic'
 	}
 	app.gg = gg.new_context(
 		bg_color: bg_color
@@ -121,6 +133,9 @@ fn main() {
 		keydown_fn: keydown
 		window_title: 'Civilization wishhh'
 	)
+
+
+
 
 	app.gg.run()
 }
